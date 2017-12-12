@@ -1,0 +1,9 @@
+{% if request.user.is_authenticated %}
+	{% if request.user in item.user.all %}
+		<a href="#" id="itemLike{{ item.id }}" data-rating=""><i class="fa fa-heart fa-2x text-liked" id="heart-icon{{ item.id }}"></i></a><b id="like-count{{ item.id }}" class="like-count">{{ item.rating_count }}</b>
+	{% else %}
+		<a href="#" id="itemLike{{ item.id }}" data-rating=""><i class="fa fa-heart-o fa-2x text-not-liked" id="heart-icon{{ item.id }}"></i></a><b id="like-count{{ item.id }}" class="like-count">{{ item.rating_count }}</b>
+	{% endif %}
+	{% else %}
+		<a href="#" data-toggle="modal" data-target="#login-modal" data-rating=""><i class="fa fa-heart-o fa-2x"></i></a>
+{% endif %}
